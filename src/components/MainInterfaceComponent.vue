@@ -152,11 +152,6 @@ function mountAllCards() {
 
   allCards.value = groups;
   cardsLauched.value = allCards.value.flat().length;
-  //allCards.value.forEach(group => {
-  //  group.forEach(() => {
-  //    cardsLauched.value++
-  //  })
-  //});
 }
 
 function mountNewLores() {
@@ -202,7 +197,7 @@ function mountAllLores() {
         allLoresArray.push({
           t: topic.topic,
           c: chapter,
-          r: isReleased
+          r: !isReleased
         });
       });
     });
