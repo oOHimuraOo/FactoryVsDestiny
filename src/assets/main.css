@@ -1,35 +1,383 @@
-@import './base.css';
+:root {
+    --body-bg: #0b0e14;
+    --body-color: #e2e8f0;
+    --primary-neon: #00f2ff;
+    --bg-primary: rgba(0, 242, 255, 0.03);
+    --bg-secondary: rgba(0, 242, 255, 0.1);
+    --bg-terciary: rgba(0, 242, 255, 0.05);
+    --secondary-dark: #1a1f26;
+    --border-tech: #2d3748;
+    --panel-bg: #11151c;
+    --shadow-primary: rgba(0, 242, 255, 0.4);
+    --scroll-bar-primary: #0b0e14;
+    --scroll-bar-sescondary: #2d3748;
+    --tailwind-sky-600: #0084d1;
+}
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.raleway-normal {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
   font-weight: normal;
+  font-style: normal;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+.raleway-bold {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.roboto-normal {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 }
+
+.space-grotesk-normal {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.space-grotesk-bold {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.share-tech-mono-regular {
+  font-family: "Share Tech Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rajdhani-light {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.rajdhani-regular {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rajdhani-medium {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.rajdhani-semibold {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.rajdhani-bold {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background-color: var(--body-bg);
+    color: var(--body-color);
+    overflow-x: hidden;
+    height: 100vh !important;
+}
+
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Grid Background Estilizado */
+.tech-grid {
+    background-color: var(--body-bg);
+    background-image:
+        linear-gradient(var(--bg-primary) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bg-primary) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+/* Scanline para o Login */
+.scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--bg-secondary);
+    animation: scan 4s linear infinite;
+    z-index: 50;
+    pointer-events: none;
+}
+@keyframes scan {
+    0% { top: 0%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* Painel Tecnológico */
+.tech-panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-tech);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.tech-panel::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px;
+    width: 15px; height: 15px;
+    border-top: 2px solid var(--primary-neon);
+    border-left: 2px solid var(--primary-neon);
+}
+
+.tech-panel::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; right: -2px;
+    width: 15px; height: 15px;
+    border-bottom: 2px solid var(--primary-neon);
+    border-right: 2px solid var(--primary-neon);
+}
+
+/* Navegação */
+.sidebar {
+    background: #07090d;
+    border-right: 1px solid var(--border-tech);
+    min-width: 250px;
+}
+
+.nav-link {
+    color: #94a3b8;
+    border-left: 3px solid transparent;
+    margin: 5px 0;
+    transition: all 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-neon);
+    background: var(--bg-terciary);
+    border-left-color: var(--primary-neon);
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+.btn-neon {
+    background: transparent !important;
+    color: var(--primary-neon) !important;
+    border: 1px solid var(--primary-neon) !important;
+    border-radius: 0 !important;
+    font-weight: bold !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    transition: all 0.4s !important;
+}
+
+.btn-neon:hover {
+    background: var(--primary-neon) !important;
+    color: #000 !important;
+    box-shadow: 0 0 20px var(--shadow-primary) !important;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-neon);
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 10px var(--primary-neon);
+}
+
+.tracking-tighter {
+  letter-spacing: -0.05em;
+}
+
+.text-sky-600 {
+  color: var(--tailwind-sky-600) !important;
+}
+
+.mtg-card-container {
+  perspective: 1000px;
+}
+
+.mtg-card {
+  background: #1e293b;
+  border: 1px solid var(--border-tech);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  height: 100%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.mtg-card:hover {
+  transform: translateY(-10px) rotateX(5deg);
+  border-color: var(--primary);
+  box-shadow: 0 0 25px var(--card-glow);
+}
+
+.card-art-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 2px solid var(--border-tech);
+}
+
+.card-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.mtg-card:hover .card-art {
+  transform: scale(1.1);
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(0deg, rgba(15,23,42,1) 0%, rgba(15,23,42,0) 50%);
+  pointer-events: none;
+}
+
+.card-content {
+  padding: 1rem;
+  background: var(--panel-bg);
+}
+
+.mana-cost {
+  font-family: 'JetBrains Mono';
+  background: rgba(0,0,0,0.3);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  border: 1px solid var(--border-tech);
+}
+
+/* Comum: cinza discreto */
+.rarity-common {
+  color: #666;
+  border-color: #999;
+  background: #f2f2f2;
+}
+
+/* Incomum: verde */
+.rarity-uncommon {
+  color: #0f2451;
+  border-color: #194587;
+  background: #d1d4e7;
+}
+
+/* Rara: dourado */
+.rarity-rare {
+  color: #856404;
+  border-color: #ffc107;
+  background: #fff3cd;
+  font-weight: bold;
+}
+
+/* Mítica: laranja avermelhado */
+.rarity-mythic {
+  color: #420c11;
+  border-color: #dc3545;
+  background: linear-gradient(90deg, #ee9e81, #ff4500);
+  font-weight: bold;
+  text-shadow: 0 0 3px #000;
+}
+
+/* Especial/Promocional: roxo */
+.rarity-special {
+  color: #4b0082;
+  border: 1px solid #6f42c1;
+  background: #e0d1f7;
+  font-style: italic;
+}
+
+/* Desconhecida */
+.rarity-unknown {
+  color: #333;
+  border: 1px dashed #aaa;
+  background: #eee;
+}
+
+.modal-content {
+  background-color: #0f172a;
+  border: 1px solid var(--primary);
+  border-radius: 0;
+  box-shadow: 0 0 50px rgba(14, 165, 233, 0.2);
+}
+
+.modal-fullscreen .modal-content {
+  background-color: #020617;
+}
+
+.reading-container {
+  line-height: 2;
+  font-size: 1.15rem;
+  color: #cbd5e1;
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.timeline-content {
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: #0dcaf0 !important;
+}
+
+.timeline-content:hover .card-art {
+  transform: scale(1.05);
+}
+
+.timeline-content:hover .tech-panel {
+  background-color: rgba(13, 202, 240, 0.05);
+}
+
+.timeline-dot {
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.2);
+  background-color: #0dcaf0;
+  border-color: #0dcaf0;
+  box-shadow: 0 0 0 6px rgba(13, 202, 240, 0.2);
+}
+
+.blink { animation: blinker 2.0s linear infinite; }
+@keyframes blinker { 50% { opacity: 0; } }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--scroll-bar-primary); }
+::-webkit-scrollbar-thumb { background: var(--scroll-bar-secondary); }
