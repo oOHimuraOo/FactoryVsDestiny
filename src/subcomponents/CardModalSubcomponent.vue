@@ -44,10 +44,10 @@
   <div class="modal fade" id="cardModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
-                <div class="modal-body p-0">
+                <div class="modal-body p-3">
                     <div class="row g-0">
                         <div class="col-md-5">
-                            <img id="modalImg" :src="CE.CardImageFinder(props.cardIndex)" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                            <img id="modalImg" :src="CE.CardImageFinder(props.cardIndex)" class="img-fluid w-100" style="object-fit: cover;">
                         </div>
                         <div class="col-md-7 p-4 d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-start mb-3">

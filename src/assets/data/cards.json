@@ -15,8 +15,8 @@
         "loyalty": null,
         "artist": "Felipe",
         "designer": "β-013",
-        "image": "",
-        "fullImage": ""
+        "image": "/images/cardImg/001.png",
+        "fullImage": "/images/fullImg/8e1e5105a04962474528c8eac6b31984 (1).jpg"
     },
     "002": {
         "number": "002",
@@ -34,8 +34,8 @@
         "loyalty": null,
         "artist": "Felipe",
         "designer": "β-013",
-        "image": "",
-        "fullImage": ""
+        "image": "/images/cardImg/002.png",
+        "fullImage": "/images/fullImg/AberrantRecoil.jpg"
     },
     "003": {
         "number": "003",
@@ -53,8 +53,8 @@
         "loyalty": null,
         "artist": "Felipe",
         "designer": "β-013",
-        "image": "",
-        "fullImage": ""
+        "image": "/images/cardImg/003.png",
+        "fullImage": "/images/fullImg/andrew-baker-abaker-snw-nivar-4.jpg"
     },
     "004": {
         "number": "004",
@@ -72,8 +72,8 @@
         "loyalty": null,
         "artist": "Felipe",
         "designer": "β-013",
-        "image": "",
-        "fullImage": ""
+        "image": "/images/cardImg/004.png",
+        "fullImage": "/images/fullImg/ArcaneReplicationModule.jpg"
     },
     "005": {
         "number": "005",
@@ -91,8 +91,8 @@
         "loyalty": null,
         "artist": "Felipe",
         "designer": "β-013",
-        "image": "",
-        "fullImage": ""
+        "image": "/images/cardImg/005.png",
+        "fullImage": "/images/fullImg/AshenBloodbarrens.jpg"
     },
     "006": {
         "number": "006",
@@ -110,7 +110,7 @@
         "loyalty": null,
         "artist": "Felipe",
         "designer": "β-013",
-        "image": "",
-        "fullImage": ""
+        "image": "/images/cardImg/006.png",
+        "fullImage": "/images/fullImg/AssemblingMachineOperator.jpg"
     }
 }

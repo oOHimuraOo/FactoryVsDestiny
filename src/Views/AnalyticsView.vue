@@ -37,7 +37,6 @@
 
 <template>
   <section id="view-analytics" class="view-content">
-    <div class="container">
       <div class="row g-4 mb-4" v-for="(cards, index) in props.CardsAvaible" :key="index">
         <div class="col-md-3 mtg-card-container" v-for="(card, idx) in cards" :key="idx">
           <div class="mtg-card" @click="openCardModal(card)">
@@ -65,6 +64,5 @@
           </div>
         </div>
       </div>
-    </div>
   </section>
 </template>

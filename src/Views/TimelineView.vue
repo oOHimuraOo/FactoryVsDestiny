@@ -50,7 +50,7 @@
           <div class="timeline-connector position-absolute" :style="{ top: '50%', [index % 2 === 0 ? 'right' : 'left']: '0', width: 'calc(50%)', height: '2px', backgroundColor: '#dee2e6', transform: index % 2 === 0 ? 'translateX(-100%)' : 'translateX(100%)' }"></div>
           <div :class="[index % 2 === 0 ? 'me-auto' : 'ms-auto', info.idxs.r ? ' cover-black' : 'timeline-content']" style="width: calc(50% - 40px);" @click="info.idxs.r ? null : openLoreModal(info.idxs)">
             <div class="card-art-wrapper">
-              <img :src="CE.CardFullImageFinder(card)" class="card-art" :alt="CE.CardNameReader(card)">
+              <img :src="CE.CardFullImageFinder(info.ci)" class="card-art" :alt="CE.CardNameReader(info.ci)">
             </div>
             <div class="tech-panel p-4  position-relative">
               <div class="d-flex justify-content-between">
