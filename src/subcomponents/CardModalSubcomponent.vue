@@ -47,7 +47,13 @@
                 <div class="modal-body p-3">
                     <div class="row g-0">
                         <div class="col-md-5">
-                            <img id="modalImg" :src="CE.CardImageFinder(props.cardIndex)" class="img-fluid w-100" style="object-fit: cover;">
+                            <img id="modalImg " :src="CE.CardImageFinder(props.cardIndex)" class="img-fluid w-100" style="object-fit: cover;">
+                            <div class="image-frame-decoration"></div>
+                            <label class="small d-block text-uppercase text-sky-600 fs-5">Artist // Designer</label>
+                            <p class="font-reading mb-0 fs-6" style="color: #cbd5e1;" >{{ CE.CardArtistReader(props.cardIndex) }} // {{ CE.CardDesignerReader(props.cardIndex) }}</p>
+                            <div class="image-frame-decoration"></div>
+                            <label class="small d-block text-uppercase text-sky-600 fs-5">Card Collection Number</label>
+                            <p class="font-reading mb-0 fs-6" style="color: #cbd5e1;" >{{ CE.CardNumberReader(props.cardIndex) }} / 298 CORE</p>
                         </div>
                         <div class="col-md-7 p-4 d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-start mb-3">
@@ -98,4 +104,43 @@
   .color-inverter {
     filter: invert(1);
   }
+
+  /* Adicione estas classes ao seu estilo existente */
+.image-frame-decoration {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.image-frame-decoration::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    right: 15%;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(30, 64, 175, 0.8) 25%,
+        rgba(30, 64, 175, 0.8) 75%,
+        transparent 100%);
+    border-radius: 2px;
+}
+
+.image-shine-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-shine-effect::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to top,
+        rgba(255, 255, 255, 0.03) 0%,
+        transparent 100%);
+    pointer-events: none;
+}
 </style>
