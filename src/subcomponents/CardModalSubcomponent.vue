@@ -65,7 +65,7 @@
                             <hr class="border-secondary" v-if="hasExtraSection()">
                             <div class="flex-grow-1" v-if="hasExtraSection()">
                                 <label class="small mb-2 d-block text-uppercase text-light fs-4" v-if="CE.CardKeywordsReader(props.cardIndex).length > 0">Keywords</label>
-                                <img v-for="(keyword, index) in CE.CardKeywordsReader(props.cardIndex)" :src="CE.CardKeywordMounter(keyword.toLowerCase())" :key="index" :alt="keyword" class="mb-2" />
+                                <img v-for="(keyword, index) in CE.CardKeywordsReader(props.cardIndex)" :src="CE.CardKeywordMounter(keyword.toLowerCase())" :key="index" :alt="keyword" class="mb-2 color-inverter" />
                                 <label class="small mb-2 d-block text-uppercase text-light fs-4" v-if="CE.CardPowerToghnessReader(props.cardIndex) != 'N/A'">Power & Toughness</label>
                                 <p class="font-reading mb-0 fs-4" style="color: #cbd5e1;" v-if="CE.CardPowerToghnessReader(props.cardIndex) != 'N/A'">{{ CE.CardPowerToghnessReader(props.cardIndex) }}</p>
                                 <label class="small mb-2 d-block text-uppercase text-light fs-4" v-if="CE.CardDefenseReader(props.cardIndex) != 'N/A'">Defense</label>
@@ -94,3 +94,8 @@
     </div>
 </template>
 
+<style>
+  .color-inverter {
+    filter: invert(1);
+  }
+</style>

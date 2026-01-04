@@ -9,6 +9,7 @@ import releaseData from '@/assets/data/datas.json';
 
 
 const cardsTotal = 298;
+const finalReleaseDate = releaseData.collectionEndDate;
 let cardsLauched = ref(0);
 
 let activeView = ref('latest');
@@ -214,7 +215,7 @@ function mountAllLores() {
         <SidebarSubcomponent :cards-lauched="cardsLauched" :cards-total="cardsTotal" @-view-change="changeView" :user-name="'β-013'"/>
 
         <!-- CONTENT AREA -->
-        <ContentAreaSubComponent :active-view-name="activeView" :cards-liberated="newCards" :-logs-liberated="newLores" :-all-avaible-cards="allCards" @-open-card-modal="handleOpenCardModal" @-open-lore-modal="handleOpenLoreModal" :-all-avaible-lores="allLores"/>
+        <ContentAreaSubComponent :active-view-name="activeView" :cards-liberated="newCards" :-logs-liberated="newLores" :-all-avaible-cards="allCards" @-open-card-modal="handleOpenCardModal" @-open-lore-modal="handleOpenLoreModal" :-all-avaible-lores="allLores" :-release-date="finalReleaseDate"/>
     </div>
   </div>
   <CardModalSubcomponent id="cardModal" v-if="CardModalVisible" :card-index="selectedCard" />

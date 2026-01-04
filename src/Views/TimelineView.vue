@@ -43,7 +43,7 @@
 <template>
   <section id="view-timeline" class="view-content">
     <div class="container">
-      <h3 class="fw-bold mb-5">CRONOLOGIA ESPECULATIVA</h3>
+      <h3 class="fw-bold mb-5">CRONOLOGICAL LOGS</h3>
       <div class="timeline-container position-relative">
         <div class="timeline-line position-absolute start-50 translate-middle-x" style="top: 0; bottom: 0; width: 2px; background-color: #dee2e6;"></div>
         <div v-for="(info, index) in timelineInfo" :key="index" class="timeline-item position-relative mb-5">

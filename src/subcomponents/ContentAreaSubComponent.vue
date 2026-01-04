@@ -13,7 +13,8 @@ import TechView from '@/Views/TechView.vue';
     cardsLiberated: Array,
     LogsLiberated: Array,
     AllAvaibleCards: Array,
-    AllAvaibleLores: Array
+    AllAvaibleLores: Array,
+    ReleaseDate: String
   });
 
   function ContentDisplayer(component) {
@@ -38,7 +39,7 @@ import TechView from '@/Views/TechView.vue';
 
     <main class="container-fluid p-4">
       <!-- VIEW: DASHBOARD -->
-      <DashboardView v-if="ContentDisplayer('latest')" :-new-cards="props.cardsLiberated" :-last-cards="lastCards" :-new-lores="props.LogsLiberated" @-open-card-modal="openCardModal" @-open-lore-modal="OpenLoreModal"/>
+      <DashboardView v-if="ContentDisplayer('latest')" :-new-cards="props.cardsLiberated" :-last-cards="lastCards" :-new-lores="props.LogsLiberated" @-open-card-modal="openCardModal" @-open-lore-modal="OpenLoreModal" :-release-date="props.ReleaseDate" />
 
       <!-- VIEW: TIMELINE -->
       <TimelineView v-if="ContentDisplayer('logs')" :-all-lore="AllAvaibleLores" @open-lore-modal="OpenLoreModal" />

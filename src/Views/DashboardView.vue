@@ -1,5 +1,5 @@
 <script setup>
-  import { defineProps, defineEmits, ref, onMounted, onUnmounted } from 'vue';
+  import { defineProps, defineEmits, ref, onMounted, onUnmounted, watch } from 'vue';
   import * as CE from '../utils/CardEssentials';
   import * as LE from '../utils/LoreEssentials';
 
@@ -7,7 +7,8 @@
   const props = defineProps({
     NewCards: Array,
     LastCards: Array,
-    NewLores: Array
+    NewLores: Array,
+    ReleaseDate: String
   })
 
   let SystemLogs = ["Connecting to central control unit...", "Loading visual analysis subroutines...", "Decoding archived manuscripts...", "Updating laboratory software modules...", "Data synchronization completed."];
@@ -120,7 +121,7 @@
   let intervalId = null;
 
   function updateCountdown() {
-    const targetDate = new Date(data.value.split('/').reverse().join('-'));
+    const targetDate = new Date(props.ReleaseDate);
     const now = new Date();
     const diff = targetDate - now;
 
@@ -145,6 +146,12 @@
   onUnmounted(() => {
     clearInterval(intervalId2);
     clearInterval(intervalId);
+  })
+
+  watch(() => props.NewLores, (newVal) => {
+    if (newVal) {
+      mountLoreLogs();
+    }
   })
 
 </script>
