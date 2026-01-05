@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { Modal } from 'bootstrap';
 import ContentAreaSubComponent from '@/subcomponents/ContentAreaSubComponent.vue';
 import SidebarSubcomponent from '@/subcomponents/SidebarSubcomponent.vue';
@@ -71,6 +71,12 @@ function handleOpenLoreModal(loreIndex) {
   }
 }
 
+watch(activeView, () => {
+  if (activeView.value === 'latest') {
+    mountNewCards();
+  }
+})
+
 onMounted(() => {
   const modalEl = document.getElementById('cardModal');
   const loreModalEl = document.getElementById('loreModal');
@@ -120,6 +126,55 @@ function isDatePassed(releaseDate, today) {
   return release <= todayDate;
 }
 
+function getNextReleaseDate(currentReleaseDate) {
+  const currentDate = new Date(currentReleaseDate);
+  // Encontra a próxima data no cronograma que é maior que a data atual
+  for (let i = 0; i < releaseData.releaseSchedule.length - 1; i++) {
+    const current = new Date(releaseData.releaseSchedule[i].date);
+    const next = new Date(releaseData.releaseSchedule[i + 1].date);
+
+    if (current.getTime() === currentDate.getTime()) {
+      return next;
+    }
+  }
+  return null;
+}
+
+function createVirtualReleaseDates(startDate, endDate, numGroups) {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const timeDiff = end.getTime() - start.getTime();
+
+  // Se não há data final (último lançamento), usa 7 dias como intervalo padrão
+  const interval = end ? timeDiff / (numGroups + 1) : 7 * 24 * 60 * 60 * 1000;
+
+  const virtualDates = [];
+  for (let i = 1; i < numGroups; i++) {
+    const virtualDate = new Date(start.getTime() + interval * i);
+    virtualDates.push(virtualDate);
+  }
+
+  return virtualDates;
+}
+
+function getNextVirtualOrRealDate(latestDate, nextDate, CardGroupLength) {
+  let today = new Date();
+  let VirtualDates = createVirtualReleaseDates(latestDate, nextDate, CardGroupLength);
+
+  let next = nextDate;
+
+  if (VirtualDates.length > 0) {
+    for (let i = 0; i < VirtualDates.length; i++) {
+      if (today <= VirtualDates[i]) {
+        next = VirtualDates[i];
+        break;
+      }
+    }
+  }
+
+  return next;
+}
+
 function mountNewCards() {
   const today = new Date();
   const passedReleases = releaseData.releaseSchedule.filter(release =>
@@ -128,23 +183,58 @@ function mountNewCards() {
 
   if (passedReleases.length === 0) {
     newCards.value = [];
+    newRelease.value = releaseData.releaseSchedule[0].date;
     return;
   }
 
   // Ordenar por data decrescente (mais recente primeiro)
   passedReleases.sort((a, b) => new Date(b.date) - new Date(a.date));
   const latestRelease = passedReleases[0];
+  const releaseDate = new Date(latestRelease.date);
 
-  let cards = latestRelease.cards;
+  // Dividir cartas em grupos de até 6
+  const cardGroups = splitCardsIntoGroups(latestRelease.cards);
 
-  // Se houver mais de 6 cartas, pega apenas as 6 primeiras
-  if (cards.length > 6) {
-    cards = cards.slice(0, 6);
+  // Obter próxima data de lançamento real
+  const nextReleaseDate = getNextReleaseDate(latestRelease.date);
+  newRelease.value = getNextVirtualOrRealDate(releaseDate, getNextReleaseDate(latestRelease.date), cardGroups.length).toString();
+
+  // Se há apenas 1 grupo, usa a data original
+  if (cardGroups.length === 1) {
+    // Verifica se a data de lançamento já passou (incluindo hoje)
+    if (isDatePassed(releaseDate, today)) {
+      newCards.value = cardGroups;
+    } else {
+      newCards.value = [];
+    }
+    return;
   }
 
-  // Dividir em grupos de 3 ou 6
-  const groups = splitCardsIntoGroups(cards);
-  newCards.value = groups;
+  // Para múltiplos grupos, cria datas virtuais
+  const virtualDates = nextReleaseDate
+    ? createVirtualReleaseDates(releaseDate, nextReleaseDate, cardGroups.length)
+    : createVirtualReleaseDates(releaseDate, null, cardGroups.length);
+
+  // Adiciona a data original como primeiro grupo
+  const allReleaseDates = [releaseDate, ...virtualDates];
+
+  // Filtra apenas os grupos cuja data já passou (incluindo hoje)
+  const visibleGroups = [];
+
+  for (let i = 0; i < cardGroups.length; i++) {
+    const groupDate = allReleaseDates[i];
+
+    if (isDatePassed(groupDate, today)) {
+      visibleGroups.push(cardGroups[i]);
+    }
+  }
+
+  // Se há grupos visíveis, pega apenas o mais recente
+  if (visibleGroups.length > 0) {
+    newCards.value = [visibleGroups[visibleGroups.length - 1]];
+  } else {
+    newCards.value = [];
+  }
 }
 
 function mountAllCards() {

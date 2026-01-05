@@ -6,7 +6,6 @@
   const emit = defineEmits(['OpenCardModal', 'OpenLoreModal']);
   const props = defineProps({
     NewCards: Array,
-    LastCards: Array,
     NewLores: Array,
     ReleaseDate: String,
     NextRelease: String
@@ -162,7 +161,9 @@
     mountLoreLogs();
     startSystemLogs();
     updateCountdown();
+    updateCountdown1();
     intervalId = setInterval(updateCountdown, 1000);
+    intervalId1 = setInterval(updateCountdown1, 1000);
   })
 
   onUnmounted(() => {
