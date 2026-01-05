@@ -29,7 +29,6 @@
         ci: LE.LoreChapterCardFinder(idxs.t, idxs.c),
         idxs: idxs
       })
-      console.log(idxs.r);
     });
 
   }

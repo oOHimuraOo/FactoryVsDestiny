@@ -26,12 +26,25 @@ let newCards = ref([]);
 let allCards = ref([]);
 let newLores = ref([]);
 let allLores = ref([]);
+let newRelease = ref();
 
 
 function changeView(viewName) {
   activeView.value = viewName;
-  console.log(activeView.value);
 }
+
+function calculateNewReleaseIndex() {
+  for (let idx = 0; idx < releaseData.releaseSchedule.length; idx++) {
+    let el = releaseData.releaseSchedule[idx];
+    let now = new Date();
+    let targetDate = new Date(el.date);
+    if (now < targetDate) {
+      newRelease.value = el.date;
+      break;
+    }
+  }
+}
+
 
 function handleOpenCardModal(cardIndex) {
   selectedCard.value = cardIndex;
@@ -61,6 +74,7 @@ function handleOpenLoreModal(loreIndex) {
 onMounted(() => {
   const modalEl = document.getElementById('cardModal');
   const loreModalEl = document.getElementById('loreModal');
+  calculateNewReleaseIndex()
   if (modalEl) {
     cardModalInstance = new Modal(modalEl);
   }
@@ -149,7 +163,6 @@ function mountAllCards() {
   for (let i = 0; i < allCardsArray.length; i += 4) {
     groups.push(allCardsArray.slice(i, i + 4));
   }
-  console.log(groups.length);
 
   allCards.value = groups;
   cardsLauched.value = allCards.value.flat().length;
@@ -215,7 +228,7 @@ function mountAllLores() {
         <SidebarSubcomponent :cards-lauched="cardsLauched" :cards-total="cardsTotal" @-view-change="changeView" :user-name="'β-013'"/>
 
         <!-- CONTENT AREA -->
-        <ContentAreaSubComponent :active-view-name="activeView" :cards-liberated="newCards" :-logs-liberated="newLores" :-all-avaible-cards="allCards" @-open-card-modal="handleOpenCardModal" @-open-lore-modal="handleOpenLoreModal" :-all-avaible-lores="allLores" :-release-date="finalReleaseDate"/>
+        <ContentAreaSubComponent :active-view-name="activeView" :cards-liberated="newCards" :-logs-liberated="newLores" :-all-avaible-cards="allCards" @-open-card-modal="handleOpenCardModal" @-open-lore-modal="handleOpenLoreModal" :-all-avaible-lores="allLores" :-release-date="finalReleaseDate" :-next-release="newRelease"/>
     </div>
   </div>
   <CardModalSubcomponent id="cardModal" v-if="CardModalVisible" :card-index="selectedCard" />

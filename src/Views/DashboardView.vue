@@ -8,7 +8,8 @@
     NewCards: Array,
     LastCards: Array,
     NewLores: Array,
-    ReleaseDate: String
+    ReleaseDate: String,
+    NextRelease: String
   })
 
   let SystemLogs = ["Connecting to central control unit...", "Loading visual analysis subroutines...", "Decoding archived manuscripts...", "Updating laboratory software modules...", "Data synchronization completed."];
@@ -108,17 +109,38 @@
 }
 
   function openCardModal(CardIndex) {
-    console.log(`Abri o modal ${CardIndex}`)
     emit("OpenCardModal", CardIndex);
   }
 
   let allDataReleased = ref(false);
   let d = ref(300);
+  let d1 = ref(300);
   let h = ref(12);
+  let h1 = ref(12);
   let m = ref(35);
+  let m1 = ref(35);
   let s = ref(56);
+  let s1 = ref(56);
   let data = ref('3/01/2026');
+
   let intervalId = null;
+  let intervalId1 = null;
+
+  function updateCountdown1() {
+    const targetDate = new Date(props.NextRelease);
+    const now = new Date();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      clearInterval(intervalId1);
+      return;
+    }
+
+    d1.value = Math.floor(diff / (1000 * 60 * 60 * 24));
+    h1.value = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    m1.value = Math.floor((diff / (1000 * 60)) % 60);
+    s1.value = Math.floor((diff / 1000) % 60);
+  }
 
   function updateCountdown() {
     const targetDate = new Date(props.ReleaseDate);
@@ -151,6 +173,12 @@
   watch(() => props.NewLores, (newVal) => {
     if (newVal) {
       mountLoreLogs();
+    }
+  })
+
+  watch(() => props.NextRelease, (newVal) => {
+    if (newVal) {
+      intervalId1 = setInterval(updateCountdown1, 1000);
     }
   })
 
@@ -197,11 +225,20 @@
 
       <div class="row g-4">
         <div class="col-12">
+          <div class="tech-panel p-4 mb-2">
+            <h2 class="fw-bold text-uppercase">New data <span class="text-sky-600">Downloading</span></h2>
+            <p class="text-secondary mb-0" >Expected download time remaining <span class="text-sky-600">{{ d1 }}:{{ h1 }}:{{ m1 }}:{{ s1 }}</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-12">
           <div class="tech-panel p-4">
             <h6 class="font-mono border-bottom border-secondary pb-2 mb-3">TERMINAL_LOG</h6>
             <div id="system-log" class="font-mono small text-info overflow-hidden" style="height: 150px;">
               <transition-group name="log" tag="div" id="system-log" class="font-mono small text-info overflow-hidden" style="height: 150px;">
-                <h6 class="text-secondary" v-for="(log, index) in DisplayLogs" :key="index" :style="{ cursor: isNewLog(log.idx) && log.prefix === '[LOG]' ? 'pointer' : 'default' }" @click="isNewLog(log.idx) && log.prefix === '[LOG]' ? HandleLogClick(log.text.index) : null">
+                <h6 class="text-secondary" v-for="(log, index) in DisplayLogs" :key="index" :style="{ cursor: log.prefix === '[LOG]' ? 'pointer' : 'default' }" @click="log.prefix === '[LOG]' ? HandleLogClick(log.text.index) : null">
                   <span class="text-sky-600 me-2">{{ log.prefix }}</span>
                   <span v-if="log.prefix === '[LOG]' && isNewLog(log.idx)" class="mana-cost rarity-special blink">[NEW]</span>
                   <span> > {{ typeof log.text === 'object' ? log.text.text : log.text }}</span>

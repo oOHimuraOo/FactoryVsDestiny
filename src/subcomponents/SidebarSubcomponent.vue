@@ -25,7 +25,6 @@
     }
 
     cardsPorcentage.value = Math.round(((props.cardsLauched) / props.cardsTotal) * 100);
-    console.log(props.cardsLauched);
   }
 
   function isActive(viewName) {

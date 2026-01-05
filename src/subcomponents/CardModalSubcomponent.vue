@@ -7,7 +7,6 @@
   })
 
   function createManaSymbolsArray(manaCost) {
-    console.log(`mana cost: ${manaCost}`);
     return manaCost.split('|')
   }
 
