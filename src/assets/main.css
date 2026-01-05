@@ -106,7 +106,6 @@ body {
 
 .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-/* Grid Background Estilizado */
 .tech-grid {
     background-color: var(--body-bg);
     background-image:
@@ -115,7 +114,6 @@ body {
     background-size: 30px 30px;
 }
 
-/* Scanline para o Login */
 .scanline {
     position: absolute;
     top: 0;
@@ -133,7 +131,6 @@ body {
     100% { top: 100%; opacity: 0; }
 }
 
-/* Painel Tecnológico */
 .tech-panel {
     background: var(--panel-bg);
     border: 1px solid var(--border-tech);
@@ -159,7 +156,6 @@ body {
     border-right: 2px solid var(--primary-neon);
 }
 
-/* Navegação */
 .sidebar {
     background: #07090d;
     border-right: 1px solid var(--border-tech);
@@ -280,21 +276,18 @@ body {
   border: 1px solid var(--border-tech);
 }
 
-/* Comum: cinza discreto */
 .rarity-common {
   color: #666;
   border-color: #999;
   background: #f2f2f2;
 }
 
-/* Incomum: verde */
 .rarity-uncommon {
   color: #0f2451;
   border-color: #194587;
   background: #d1d4e7;
 }
 
-/* Rara: dourado */
 .rarity-rare {
   color: #856404;
   border-color: #ffc107;
@@ -302,7 +295,6 @@ body {
   font-weight: bold;
 }
 
-/* Mítica: laranja avermelhado */
 .rarity-mythic {
   color: #420c11;
   border-color: #dc3545;
@@ -311,7 +303,6 @@ body {
   text-shadow: 0 0 3px #000;
 }
 
-/* Especial/Promocional: roxo */
 .rarity-special {
   color: #4b0082;
   border: 1px solid #6f42c1;
@@ -319,7 +310,6 @@ body {
   font-style: italic;
 }
 
-/* Desconhecida */
 .rarity-unknown {
   color: #333;
   border: 1px dashed #aaa;

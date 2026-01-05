@@ -37,17 +37,9 @@ import TechView from '@/Views/TechView.vue';
     <HeaderSubcomponent />
 
     <main class="container-fluid p-4">
-      <!-- VIEW: DASHBOARD -->
       <DashboardView v-if="ContentDisplayer('latest')" :-new-cards="props.cardsLiberated" :-new-lores="props.LogsLiberated" @-open-card-modal="openCardModal" @-open-lore-modal="OpenLoreModal" :-release-date="props.ReleaseDate" :-next-release="props.NextRelease" />
-
-      <!-- VIEW: TIMELINE -->
       <TimelineView v-if="ContentDisplayer('logs')" :-all-lore="AllAvaibleLores" @open-lore-modal="OpenLoreModal" />
-
-      <!-- VIEW: ANALYTICS -->
       <AnalyticsView v-if="ContentDisplayer('data')" :-cards-avaible="AllAvaibleCards" @open-card-modal="openCardModal" />
-
-      <!-- VIEW: TECH -->
-      <TechView v-if="ContentDisplayer('')"/>
     </main>
   </div>
 </template>

@@ -187,21 +187,16 @@ function mountNewCards() {
     return;
   }
 
-  // Ordenar por data decrescente (mais recente primeiro)
   passedReleases.sort((a, b) => new Date(b.date) - new Date(a.date));
   const latestRelease = passedReleases[0];
   const releaseDate = new Date(latestRelease.date);
 
-  // Dividir cartas em grupos de até 6
   const cardGroups = splitCardsIntoGroups(latestRelease.cards);
 
-  // Obter próxima data de lançamento real
   const nextReleaseDate = getNextReleaseDate(latestRelease.date);
   newRelease.value = getNextVirtualOrRealDate(releaseDate, getNextReleaseDate(latestRelease.date), cardGroups.length).toString();
 
-  // Se há apenas 1 grupo, usa a data original
   if (cardGroups.length === 1) {
-    // Verifica se a data de lançamento já passou (incluindo hoje)
     if (isDatePassed(releaseDate, today)) {
       newCards.value = cardGroups;
     } else {
@@ -210,15 +205,12 @@ function mountNewCards() {
     return;
   }
 
-  // Para múltiplos grupos, cria datas virtuais
   const virtualDates = nextReleaseDate
     ? createVirtualReleaseDates(releaseDate, nextReleaseDate, cardGroups.length)
     : createVirtualReleaseDates(releaseDate, null, cardGroups.length);
 
-  // Adiciona a data original como primeiro grupo
   const allReleaseDates = [releaseDate, ...virtualDates];
 
-  // Filtra apenas os grupos cuja data já passou (incluindo hoje)
   const visibleGroups = [];
 
   for (let i = 0; i < cardGroups.length; i++) {
@@ -229,7 +221,6 @@ function mountNewCards() {
     }
   }
 
-  // Se há grupos visíveis, pega apenas o mais recente
   if (visibleGroups.length > 0) {
     newCards.value = [visibleGroups[visibleGroups.length - 1]];
   } else {
@@ -241,14 +232,12 @@ function mountAllCards() {
   const today = new Date();
   let allCardsArray = [];
 
-  // Coletar todas as cartas já lançadas
   releaseData.releaseSchedule.forEach(release => {
     if (isDatePassed(release.date, today)) {
       allCardsArray.push(...release.cards);
     }
   });
 
-  // Dividir em grupos de no máximo 4 cartas
   const groups = [];
   for (let i = 0; i < allCardsArray.length; i += 4) {
     groups.push(allCardsArray.slice(i, i + 4));
@@ -271,11 +260,9 @@ function mountNewLores() {
 
   let allNewLores = [];
 
-  // Coletar todas as lores de todas as releases passadas
   passedReleases.forEach(release => {
     release.loreTopics.forEach(topic => {
       topic.chapters.forEach(chapter => {
-        // Para newLores, sempre marcar como lançado (true)
         allNewLores.push({
           t: topic.topic,
           c: chapter,
@@ -292,7 +279,6 @@ function mountAllLores() {
   const today = new Date();
   let allLoresArray = [];
 
-  // Para todas as releases, incluindo as futuras
   releaseData.releaseSchedule.forEach(release => {
     const isReleased = isDatePassed(release.date, today);
 
@@ -314,10 +300,7 @@ function mountAllLores() {
 <template>
   <div id="main-interface" class="h-100">
     <div class="d-flex h-100">
-        <!-- SIDEBAR -->
         <SidebarSubcomponent :cards-lauched="cardsLauched" :cards-total="cardsTotal" @-view-change="changeView" :user-name="'β-013'"/>
-
-        <!-- CONTENT AREA -->
         <ContentAreaSubComponent :active-view-name="activeView" :cards-liberated="newCards" :-logs-liberated="newLores" :-all-avaible-cards="allCards" @-open-card-modal="handleOpenCardModal" @-open-lore-modal="handleOpenLoreModal" :-all-avaible-lores="allLores" :-release-date="finalReleaseDate" :-next-release="newRelease"/>
     </div>
   </div>
