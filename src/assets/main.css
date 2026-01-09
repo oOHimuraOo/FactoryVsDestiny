@@ -9,102 +9,102 @@
     --border-tech: #2d3748;
     --panel-bg: #11151c;
     --shadow-primary: rgba(0, 242, 255, 0.4);
-    --scroll-bar-primary: #0b0e14;
-    --scroll-bar-sescondary: #2d3748;
+    --scroll-bar-primary: #0d0e11;
+    --scroll-bar-sescondary: #274477;
     --tailwind-sky-600: #0084d1;
 }
 
 .raleway-normal {
-  font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
+  font-family: "Raleway", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: normal !important;
+  font-style: normal !important;
 }
 
 .raleway-bold {
-  font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: bold;
-  font-style: normal;
+  font-family: "Raleway", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: bold !important;
+  font-style: normal !important;
 }
 
 .roboto-normal {
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
+  font-family: "Roboto", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: normal !important;
+  font-style: normal !important;
   font-variation-settings:
-    "wdth" 100;
+    "wdth" 100 !important;
 }
 
 .roboto-bold {
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: bold;
-  font-style: normal;
+  font-family: "Roboto", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: bold !important;
+  font-style: normal !important;
   font-variation-settings:
-    "wdth" 100;
+    "wdth" 100 !important;
 }
 
 .space-grotesk-normal {
-  font-family: "Space Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
+  font-family: "Space Grotesk", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: normal !important;
+  font-style: normal !important;
 }
 
 .space-grotesk-bold {
-  font-family: "Space Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: bold;
-  font-style: normal;
+  font-family: "Space Grotesk", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: bold !important;
+  font-style: normal !important;
 }
 
 .share-tech-mono-regular {
-  font-family: "Share Tech Mono", monospace;
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Share Tech Mono", monospace !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
 }
 
 .rajdhani-light {
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+  font-family: "Rajdhani", sans-serif !important;
+  font-weight: 300 !important;
+  font-style: normal !important;
 }
 
 .rajdhani-regular {
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Rajdhani", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
 }
 
 .rajdhani-medium {
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 500;
-  font-style: normal;
+  font-family: "Rajdhani", sans-serif !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
 }
 
 .rajdhani-semibold {
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 600;
-  font-style: normal;
+  font-family: "Rajdhani", sans-serif !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
 }
 
 .rajdhani-bold {
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 700;
-  font-style: normal;
+  font-family: "Rajdhani", sans-serif !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
 }
 
 body {
-    font-family: 'Rajdhani', sans-serif;
-    background-color: var(--body-bg);
-    color: var(--body-color);
-    overflow-x: hidden;
+    font-family: 'Rajdhani', sans-serif !important;
+    background-color: var(--body-bg) !important;
+    color: var(--body-color) !important;
+    overflow-x: hidden !important;
     height: 100vh !important;
 }
 
-.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-mono { font-family: 'JetBrains Mono', monospace !important; }
 
 .tech-grid {
     background-color: var(--body-bg);
@@ -163,16 +163,16 @@ body {
 }
 
 .nav-link {
-    color: #94a3b8;
-    border-left: 3px solid transparent;
-    margin: 5px 0;
-    transition: all 0.3s;
+    color: #94a3b8 !important;
+    border-left: 3px solid transparent !important;
+    margin: 5px 0 !important;
+    transition: all 0.3s !important;
 }
 
 .nav-link:hover, .nav-link.active {
-    color: var(--primary-neon);
-    background: var(--bg-terciary);
-    border-left-color: var(--primary-neon);
+    color: var(--primary-neon) !important;
+    background: var(--bg-terciary) !important;
+    border-left-color: var(--primary-neon) !important;
 }
 
 .chart-container {
@@ -317,7 +317,7 @@ body {
 }
 
 .modal-content {
-  background-color: #0f172a;
+  background-color: #0f172a !important;
   border: 1px solid var(--primary);
   border-radius: 0;
   box-shadow: 0 0 50px rgba(14, 165, 233, 0.2);
@@ -366,9 +366,172 @@ body {
   box-shadow: 0 0 0 6px rgba(13, 202, 240, 0.2);
 }
 
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+
 .blink { animation: blinker 2.0s linear infinite; }
 @keyframes blinker { 50% { opacity: 0; } }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--scroll-bar-primary); }
-::-webkit-scrollbar-thumb { background: var(--scroll-bar-secondary); }
+@media (min-width: 1024px) {
+  .hamburger-compartment {
+    display: none !important;
+  }
+
+  .nav-container {
+    display: flex !important;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0.5rem !important;
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--scroll-bar-sescondary) !important; }
+  ::-webkit-scrollbar-thumb { background: var(--scroll-bar-primary) !important; }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  #main-interface > .d-flex {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-tech);
+    flex-direction: column;
+    flex-grow: 0;
+  }
+
+  .hamburger-compartment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-tech);
+    padding: 0.5rem 1rem;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    width: auto;
+    height: auto;
+    flex-direction: Column;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .hamburger-menu span {
+    width: 25px;
+    height: 2px;
+    background: var(--primary-neon);
+    border-radius: 1px;
+    display: inline-block;
+  }
+
+  .nav-container {
+    display: none;
+    flex-direction: row;
+    padding: 1rem 0 !important;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .nav-container.active {
+    display: flex;
+    flex-direction: column;
+    overflow-x: visible;
+    padding: 1rem 0.5rem !important;
+  }
+
+  .nav-link {
+    border-left: none !important;
+    border-bottom: 3px solid transparent !important;
+    padding: 0.75rem 1rem !important;
+    margin: 0 !important;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    border-left: none !important;
+    border-bottom-color: var(--primary-neon) !important;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  #main-interface > .d-flex {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: none;
+    flex-direction: column;
+    flex-grow: 0;
+  }
+
+  .hamburger-compartment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-tech);
+    padding: 0.75rem 1rem;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .hamburger-menu span {
+    width: 28px;
+    height: 2px;
+    background: var(--primary-neon);
+    border-radius: 1px;
+    display: block;
+  }
+
+  .nav-container {
+    display: none;
+    flex-direction: column;
+    padding: 0.5rem !important;
+    width: 100%;
+  }
+
+  .nav-container.active {
+    display: flex;
+    border-top: 1px solid var(--border-tech);
+    padding: 1rem 0.5rem !important;
+  }
+
+  .nav-link {
+    border-left: none !important;
+    border-bottom: 3px solid transparent !important;
+    padding: 0.75rem 1rem !important;
+    margin: 0.25rem 0 !important;
+    white-space: normal;
+    font-size: 0.95rem;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    border-left: none !important;
+    border-bottom-color: var(--primary-neon) !important;
+  }
+}

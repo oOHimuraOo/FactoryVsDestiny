@@ -183,7 +183,6 @@ const symbolMap = {
   'PHYG': manaPhyG
 };
 
-// Função auxiliar para pegar a carta pelo índice
 function getCard(cardIndex) {
   return cards[cardIndex] || null
 }

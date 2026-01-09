@@ -38,7 +38,7 @@
 <template>
   <section id="view-analytics" class="view-content">
       <div class="row g-4 mb-4" v-for="(cards, index) in props.CardsAvaible" :key="index">
-        <div class="col-md-3 mtg-card-container" v-for="(card, idx) in cards" :key="idx">
+        <div class="col-12 col-sm-6 col-md-3 mtg-card-container" v-for="(card, idx) in cards" :key="idx">
           <div class="mtg-card" @click="openCardModal(card)">
             <div class="card-art-wrapper">
               <img :src="CE.CardFullImageFinder(card)" class="card-art" :alt="CE.CardNameReader(card)">

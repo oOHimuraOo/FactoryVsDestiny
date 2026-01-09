@@ -47,7 +47,7 @@
         <div class="timeline-line position-absolute start-50 translate-middle-x" style="top: 0; bottom: 0; width: 2px; background-color: #dee2e6;"></div>
         <div v-for="(info, index) in timelineInfo" :key="index" class="timeline-item position-relative mb-5">
           <div class="timeline-connector position-absolute" :style="{ top: '50%', [index % 2 === 0 ? 'right' : 'left']: '0', width: 'calc(50%)', height: '2px', backgroundColor: '#dee2e6', transform: index % 2 === 0 ? 'translateX(-100%)' : 'translateX(100%)' }"></div>
-          <div :class="[index % 2 === 0 ? 'me-auto' : 'ms-auto', info.idxs.r ? ' cover-black' : 'timeline-content']" style="width: calc(50% - 40px);" @click="info.idxs.r ? null : openLoreModal(info.idxs)">
+          <div :class="[index % 2 === 0 ? 'me-auto' : 'ms-auto', info.idxs.r ? ' cover-black' : 'timeline-content', 'timeline-card']" @click="info.idxs.r ? null : openLoreModal(info.idxs)">
             <div class="card-art-wrapper">
               <img :src="CE.CardFullImageFinder(info.ci)" class="card-art" :alt="CE.CardNameReader(info.ci)">
             </div>
@@ -81,5 +81,52 @@
     height: 100%;
     background: black;
     z-index: 100;
+  }
+
+  @media (min-width: 768px) {
+    .timeline-line {
+      display: block !important;
+    }
+
+    .timeline-connector {
+      display: block !important;
+    }
+
+    .timeline-card {
+      width: calc(50% - 40px) !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .timeline-line {
+      display: none !important;
+    }
+
+    .timeline-connector {
+      display: none !important;
+    }
+
+    .timeline-item {
+      margin-left: 0 !important;
+    }
+
+    .timeline-card {
+      width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    .timeline-dot {
+      display: none !important;
+    }
+
+    .card-art-wrapper {
+      max-height: 300px !important;
+      overflow: hidden;
+    }
+
+    .tech-panel {
+      padding: 1rem !important;
+    }
   }
 </style>

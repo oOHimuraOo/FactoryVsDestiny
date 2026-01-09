@@ -10,7 +10,7 @@
 
 <template>
   <div class="modal fade" id="readingModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content border-0">
                 <div class="modal-header border-0 px-5 pt-4">
                     <div class="font-mono">

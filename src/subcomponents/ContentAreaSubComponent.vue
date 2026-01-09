@@ -1,10 +1,10 @@
 <script setup>
-import { ref, defineProps, defineEmits } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 import DashboardView from '@/Views/DashboardView.vue';
 import HeaderSubcomponent from './HeaderSubcomponent.vue';
 import TimelineView from '@/Views/TimelineView.vue';
 import AnalyticsView from '@/Views/AnalyticsView.vue';
-import TechView from '@/Views/TechView.vue';
+import RulesView from '@/Views/RulesView.vue';
 
 
   const emit = defineEmits(['OpenCardModal', 'OpenLoreModal']);
@@ -33,13 +33,14 @@ import TechView from '@/Views/TechView.vue';
 </script>
 
 <template>
-  <div class="flex-grow-1 overflow-auto ">
+  <div class="flex-grow-1 overflow-y-auto">
     <HeaderSubcomponent />
 
     <main class="container-fluid p-4">
       <DashboardView v-if="ContentDisplayer('latest')" :-new-cards="props.cardsLiberated" :-new-lores="props.LogsLiberated" @-open-card-modal="openCardModal" @-open-lore-modal="OpenLoreModal" :-release-date="props.ReleaseDate" :-next-release="props.NextRelease" />
       <TimelineView v-if="ContentDisplayer('logs')" :-all-lore="AllAvaibleLores" @open-lore-modal="OpenLoreModal" />
       <AnalyticsView v-if="ContentDisplayer('data')" :-cards-avaible="AllAvaibleCards" @open-card-modal="openCardModal" />
+      <RulesView v-if="ContentDisplayer('rules')" />
     </main>
   </div>
 </template>

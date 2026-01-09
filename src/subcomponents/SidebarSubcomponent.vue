@@ -10,10 +10,18 @@
 
   let cardsPorcentage = ref(1);
   let selectedViewName = ref('latest');
+  let sidebarOpen = ref(false);
+
+  function toggleSidebar() {
+    sidebarOpen.value = !sidebarOpen.value;
+  }
 
   function changeView(viewName) {
     selectedViewName.value = viewName;
     emit('ViewChange', viewName);
+    if (window.innerWidth < 768) {
+      sidebarOpen.value = false;
+    }
   }
 
   function changePercentage() {
@@ -31,7 +39,8 @@
   const validViews = {
     latest: true,
     data: true,
-    logs: true
+    logs: true,
+    rules: true
   };
   return validViews[viewName] ? viewName === selectedViewName.value ? 'active' : '' : '';
 }
@@ -55,15 +64,26 @@
       <small class="font-mono text-secondary">ID: {{ props.userName ?? 'Unknown' }}</small>
     </div>
 
-    <nav class="nav flex-column p-2 flex-grow-1">
+    <div class="hamburger-compartment">
+      <button class="hamburger-menu" @click="toggleSidebar">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="nav-container" :class="{ 'active': sidebarOpen }">
       <a href="#" @click="changeView('latest')" class="nav-link d-flex align-items-center gap-3" :class="isActive('latest')" >
-        <span>⊞</span> Latest Updates
+        <span><i class="bi bi-newspaper"></i></span> Latest Updates
+      </a>
+      <a href="#" @click="changeView('rules')" class="nav-link d-flex align-items-center gap-3" :class="isActive('rules')">
+        <span><i class="bi bi-puzzle"></i></span> Analised Patterns
       </a>
       <a href="#" @click="changeView('data')" class="nav-link d-flex align-items-center gap-3" :class="isActive('data')" >
-        <span>📊</span> All Avaible data
+        <span><i class="bi bi-clipboard2-data"></i></span> All Avaible data
       </a>
       <a href="#" @click="changeView('logs')" class="nav-link d-flex align-items-center gap-3" :class="isActive('logs')">
-        <span>≋</span> Cronological Logs
+        <span><i class="bi bi-clock-history"></i></span> Cronological Logs
       </a>
     </nav>
 

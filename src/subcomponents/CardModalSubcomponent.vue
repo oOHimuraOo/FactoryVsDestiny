@@ -45,7 +45,7 @@
             <div class="modal-content">
                 <div class="modal-body p-3">
                     <div class="row g-0">
-                        <div class="col-md-5">
+                        <div class="col-12 col-md-5">
                             <img id="modalImg " :src="CE.CardImageFinder(props.cardIndex)" class="img-fluid w-100" style="object-fit: cover;">
                             <div class="image-frame-decoration"></div>
                             <label class="small d-block text-uppercase text-sky-600 fs-5">Artist // Designer</label>
@@ -54,7 +54,7 @@
                             <label class="small d-block text-uppercase text-sky-600 fs-5">Card Collection Number</label>
                             <p class="font-reading mb-0 fs-6" style="color: #cbd5e1;" >{{ CE.CardNumberReader(props.cardIndex) }} / 298 CORE</p>
                         </div>
-                        <div class="col-md-7 p-4 d-flex flex-column">
+                        <div class="col-12 col-md-7 p-4 d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <div>
                                     <h2 id="modalName" class="fw-bold text-white mb-0">{{ CE.CardNameReader(props.cardIndex) }}</h2>

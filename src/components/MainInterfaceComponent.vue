@@ -49,7 +49,6 @@ function calculateNewReleaseIndex() {
 function handleOpenCardModal(cardIndex) {
   selectedCard.value = cardIndex;
 
-  // garante que o modal já foi montado
   const modalEl = document.getElementById('cardModal');
   if (modalEl) {
     if (!cardModalInstance) {
@@ -95,7 +94,6 @@ onMounted(() => {
   mountAllLores();
 });
 
-// Função auxiliar para dividir cartas em grupos de no máximo 6
 function splitCardsIntoGroups(cards) {
   let groups = [];
   let i = 0;
@@ -117,7 +115,6 @@ function splitCardsIntoGroups(cards) {
   return groups;
 }
 
-// Função auxiliar para comparar datas (apenas data, sem hora)
 function isDatePassed(releaseDate, today) {
   const release = new Date(releaseDate);
   const todayDate = new Date(today);
@@ -128,7 +125,6 @@ function isDatePassed(releaseDate, today) {
 
 function getNextReleaseDate(currentReleaseDate) {
   const currentDate = new Date(currentReleaseDate);
-  // Encontra a próxima data no cronograma que é maior que a data atual
   for (let i = 0; i < releaseData.releaseSchedule.length - 1; i++) {
     const current = new Date(releaseData.releaseSchedule[i].date);
     const next = new Date(releaseData.releaseSchedule[i + 1].date);
@@ -145,7 +141,6 @@ function createVirtualReleaseDates(startDate, endDate, numGroups) {
   const end = new Date(endDate);
   const timeDiff = end.getTime() - start.getTime();
 
-  // Se não há data final (último lançamento), usa 7 dias como intervalo padrão
   const interval = end ? timeDiff / (numGroups + 1) : 7 * 24 * 60 * 60 * 1000;
 
   const virtualDates = [];
